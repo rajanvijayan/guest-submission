@@ -29,3 +29,33 @@
 .component-2-from-example-2 {
   padding: 1px;
 }
+
+.gs-form-row {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.gs-form-row label {
+  margin-bottom: 10px;
+}
+
+.gs-alert {
+  padding: 10px;
+  margin-top: 10px;
+}
+.gs-alert p {
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+.gs-alert.succ {
+  border: 1px solid green;
+}
+.gs-alert.succ p {
+  color: green;
+}
+.gs-alert.err {
+  border: 1px solid red;
+}
+.gs-alert.err p {
+  color: red;
+}
