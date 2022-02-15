@@ -40,3 +40,34 @@
         color: red;
     }
 }
+.gs-list-wrap{
+    .gs-post{
+        border: 1px solid #CCCCCC;
+        margin-bottom: 10px;
+        padding: 20px 15px;
+        h2{
+            font-size: 20px;
+            line-height: 28px;
+        }
+        p{
+            font-size: 16px;
+            line-height: 22px;
+        }
+        a.gs-link{
+            border: 1px solid #CCCCCC;
+            color: #777777;
+            padding: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+    }
+}
+.gs-pagination{
+    .page-numbers{
+        border: 1px solid #CCC;
+        color: #777777;
+        display: inline-block;
+        padding: 5px 10px;
+        text-decoration: none;
+    }
+}
