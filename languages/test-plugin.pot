@@ -115,10 +115,10 @@ msgstr ""
 msgid "This is being loaded inside \"wp_footer\" from the templates class"
 msgstr ""
 
-#: ../test-plugin.php:56
-msgid "Test Plugin is unable to find the Bootstrap class."
+#: ../guest-submission.php:56
+msgid "Guest Submission is unable to find the Bootstrap class."
 msgstr ""
 
-#: ../test-plugin.php:67
-msgid "Test Plugin is unable to run the Bootstrap class."
+#: ../guest-submission.php:67
+msgid "Guest Submission is unable to run the Bootstrap class."
 msgstr ""

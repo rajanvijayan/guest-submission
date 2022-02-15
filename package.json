@@ -25,7 +25,7 @@
     "stylelint:fix": "stylelint assets/src/**/**/*.{css,scss,pcss} --fix",
     "prettier": "prettier assets/src/js/**/*.js",
     "prettier:fix": "prettier --write assets/src/js/**/*.js",
-    "translate": "wp-pot --src '**/**/**/*.php' --dest-file 'languages/test-plugin.pot' --package 'test-plugin' --domain 'test-plugin' --last-translator 'Rajan <me@rajanvijayan.com>' --team 'Rajan <me@rajanvijayan.com>' --bug-report 'rajanvijayan.com'"
+    "translate": "wp-pot --src '**/**/**/*.php' --dest-file 'languages/guest-submission.pot' --package 'guest-submission' --domain 'guest-submission' --last-translator 'Rajan <me@rajanvijayan.com>' --team 'Rajan <me@rajanvijayan.com>' --bug-report 'rajanvijayan.com'"
   },
   "babel": {
     "extends": "./webpack/babel.config.js"

@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,14 +11,14 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin;
+namespace GuestSubmission;
 
-use TestPlugin\Common\Abstracts\Base;
-use TestPlugin\Common\Traits\Requester;
-use TestPlugin\Common\Utils\Errors;
-use TestPlugin\Config\Classes;
-use TestPlugin\Config\I18n;
-use TestPlugin\Config\Requirements;
+use GuestSubmission\Common\Abstracts\Base;
+use GuestSubmission\Common\Traits\Requester;
+use GuestSubmission\Common\Utils\Errors;
+use GuestSubmission\Config\Classes;
+use GuestSubmission\Config\I18n;
+use GuestSubmission\Config\Requirements;
 
 /**
  * Bootstrap the plugin
@@ -169,10 +169,10 @@ final class Bootstrap extends Base {
 				Errors::wpDie(
 					sprintf(  /* translators: %s: php class namespace */
 						__( 'Could not load class "%s". The "init" method is probably missing or try a `composer dumpautoload -o` to refresh the autoloader.',
-							'test-plugin'
+							'guest-submission'
 						), $class
 					),
-					__( 'Plugin initialize failed', 'test-plugin' ),
+					__( 'Plugin initialize failed', 'guest-submission' ),
 					__FILE__, $err
 				);
 			}
@@ -215,7 +215,7 @@ final class Bootstrap extends Base {
 		// be a bit slower. The plugin needs to be optimized before production-release
 		// Errors::writeLog(
 		//    [
-		//        'title'   => __( 'Test Plugin classes are not being loaded by Composer\'s Autoloader' ),
+		//        'title'   => __( 'Guest Submission classes are not being loaded by Composer\'s Autoloader' ),
 		//        'message' => __( 'Try a `composer dumpautoload -o` to optimize the autoloader that will improve the performance on autoloading itself.' )
 		//    ]
 		//);

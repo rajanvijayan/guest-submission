@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,14 +11,14 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\App\General;
+namespace GuestSubmission\App\General;
 
-use TestPlugin\Common\Abstracts\Base;
+use GuestSubmission\Common\Abstracts\Base;
 
 /**
  * Class PostTypes
  *
- * @package TestPlugin\App\General
+ * @package GuestSubmission\App\General
  * @since 1.0.0
  */
 class PostTypes extends Base {
@@ -63,13 +63,13 @@ class PostTypes extends Base {
 					'singular_name'  => $this::POST_TYPE['singular'],
 					'menu_name'      => $this::POST_TYPE['title'],
 					'name_admin_bar' => $this::POST_TYPE['singular'],
-					'add_new'        => sprintf( /* translators: %s: post type singular title */ __( 'New %s', 'test-plugin' ), $this::POST_TYPE['singular'] ),
-					'add_new_item'   => sprintf( /* translators: %s: post type singular title */ __( 'Add New %s', 'test-plugin' ), $this::POST_TYPE['singular'] ),
-					'new_item'       => sprintf( /* translators: %s: post type singular title */ __( 'New %s', 'test-plugin' ), $this::POST_TYPE['singular'] ),
-					'edit_item'      => sprintf( /* translators: %s: post type singular title */ __( 'Edit %s', 'test-plugin' ), $this::POST_TYPE['singular'] ),
-					'view_item'      => sprintf( /* translators: %s: post type singular title */ __( 'View %s', 'test-plugin' ), $this::POST_TYPE['singular'] ),
-					'all_items'      => sprintf( /* translators: %s: post type title */ __( 'All %s', 'test-plugin' ), $this::POST_TYPE['title'] ),
-					'search_items'   => sprintf( /* translators: %s: post type title */ __( 'Search %s', 'test-plugin' ), $this::POST_TYPE['title'] ),
+					'add_new'        => sprintf( /* translators: %s: post type singular title */ __( 'New %s', 'guest-submission' ), $this::POST_TYPE['singular'] ),
+					'add_new_item'   => sprintf( /* translators: %s: post type singular title */ __( 'Add New %s', 'guest-submission' ), $this::POST_TYPE['singular'] ),
+					'new_item'       => sprintf( /* translators: %s: post type singular title */ __( 'New %s', 'guest-submission' ), $this::POST_TYPE['singular'] ),
+					'edit_item'      => sprintf( /* translators: %s: post type singular title */ __( 'Edit %s', 'guest-submission' ), $this::POST_TYPE['singular'] ),
+					'view_item'      => sprintf( /* translators: %s: post type singular title */ __( 'View %s', 'guest-submission' ), $this::POST_TYPE['singular'] ),
+					'all_items'      => sprintf( /* translators: %s: post type title */ __( 'All %s', 'guest-submission' ), $this::POST_TYPE['title'] ),
+					'search_items'   => sprintf( /* translators: %s: post type title */ __( 'Search %s', 'guest-submission' ), $this::POST_TYPE['title'] ),
 				],
 				'public'             => true,
 				'publicly_queryable' => true,

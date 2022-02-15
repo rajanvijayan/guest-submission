@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,16 +11,16 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Common;
+namespace GuestSubmission\Common;
 
-use TestPlugin\App\Frontend\Templates;
-use TestPlugin\Common\Abstracts\Base;
+use GuestSubmission\App\Frontend\Templates;
+use GuestSubmission\Common\Abstracts\Base;
 
 /**
  * Main function class for external uses
  *
  * @see test_plugin()
- * @package TestPlugin\Common
+ * @package GuestSubmission\Common
  */
 class Functions extends Base {
 	/**

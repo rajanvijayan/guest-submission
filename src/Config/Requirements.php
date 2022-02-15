@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,10 +11,10 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Config;
+namespace GuestSubmission\Config;
 
-use TestPlugin\Common\Abstracts\Base;
-use TestPlugin\Common\Utils\Errors;
+use GuestSubmission\Common\Abstracts\Base;
+use GuestSubmission\Common\Utils\Errors;
 
 /**
  * Check if any requirements are needed to run this plugin. We use the
@@ -22,7 +22,7 @@ use TestPlugin\Common\Utils\Errors;
  * plugins, themes or PHP/WP version are required.
  * @docs https://github.com/micropackage/requirements
  *
- * @package TestPlugin\Config
+ * @package GuestSubmission\Config
  * @since 1.0.0
  */
 final class Requirements extends Base {
@@ -89,9 +89,9 @@ final class Requirements extends Base {
 				[
 					'current' => phpversion(),
 					'compare' => $this->plugin->requiredPhp(),
-					'title'   => __( 'Invalid PHP version', 'test-plugin' ),
+					'title'   => __( 'Invalid PHP version', 'guest-submission' ),
 					'message' => sprintf( /* translators: %1$1s: required php version, %2$2s: current php version */
-						__( 'You must be using PHP %1$1s or greater. You are currently using PHP %2$2s.', 'test-plugin' ),
+						__( 'You must be using PHP %1$1s or greater. You are currently using PHP %2$2s.', 'guest-submission' ),
 						$this->plugin->requiredPhp(),
 						phpversion()
 					),
@@ -100,9 +100,9 @@ final class Requirements extends Base {
 				[
 					'current' => get_bloginfo( 'version' ),
 					'compare' => $this->plugin->requiredWp(),
-					'title'   => __( 'Invalid WordPress version', 'test-plugin' ),
+					'title'   => __( 'Invalid WordPress version', 'guest-submission' ),
 					'message' => sprintf( /* translators: %1$1s: required wordpress version, %2$2s: current wordpress version */
-						__( 'You must be using WordPress %1$1s or greater. You are currently using WordPress %2$2s.', 'test-plugin' ),
+						__( 'You must be using WordPress %1$1s or greater. You are currently using WordPress %2$2s.', 'guest-submission' ),
 						$this->plugin->requiredWp(),
 						get_bloginfo( 'version' )
 					),

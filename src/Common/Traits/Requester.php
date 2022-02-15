@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,9 +11,9 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Common\Traits;
+namespace GuestSubmission\Common\Traits;
 
-use TestPlugin\Common\Utils\Errors;
+use GuestSubmission\Common\Utils\Errors;
 
 /**
  * The requester trait to determine what we request; used to determine
@@ -21,7 +21,7 @@ use TestPlugin\Common\Utils\Errors;
  *
  * @see Bootstrap
  *
- * @package TestPlugin\Common\Traits
+ * @package GuestSubmission\Common\Traits
  * @since 1.0.0
  */
 trait Requester {
@@ -50,10 +50,10 @@ trait Requester {
 			default:
 				Errors::wpDie(
 					sprintf( /* translators: %s: request function */
-						__( 'Unknown request type: %s', 'test-plugin' ),
+						__( 'Unknown request type: %s', 'guest-submission' ),
 						$type
 					),
-					__( 'Classes are not being correctly requested', 'test-plugin' ),
+					__( 'Classes are not being correctly requested', 'guest-submission' ),
 					__FILE__
 				);
 				return false;

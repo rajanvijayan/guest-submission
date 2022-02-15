@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,14 +11,14 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Common\Abstracts;
+namespace GuestSubmission\Common\Abstracts;
 
-use TestPlugin\Config\Plugin;
+use GuestSubmission\Config\Plugin;
 
 /**
  * The Base class which can be extended by other classes to load in default methods
  *
- * @package TestPlugin\Common\Abstracts
+ * @package GuestSubmission\Common\Abstracts
  * @since 1.0.0
  */
 abstract class Base {

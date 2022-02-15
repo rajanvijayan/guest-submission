@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,15 +11,15 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\App\General;
+namespace GuestSubmission\App\General;
 
-use TestPlugin\Common\Abstracts\Base;
-use TestPlugin\App\General\PostTypes;
+use GuestSubmission\Common\Abstracts\Base;
+use GuestSubmission\App\General\PostTypes;
 
 /**
  * Class Queries
  *
- * @package TestPlugin\App\General
+ * @package GuestSubmission\App\General
  * @since 1.0.0
  */
 class Queries extends Base {

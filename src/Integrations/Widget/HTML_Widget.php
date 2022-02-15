@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,15 +11,15 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Integrations\Widget;
+namespace GuestSubmission\Integrations\Widget;
 
-use TestPlugin\Config\Plugin;
+use GuestSubmission\Config\Plugin;
 use WP_Widget;
 
 /**
  * Class HTML_Widget
  *
- * @package TestPlugin\Integrations\Widget
+ * @package GuestSubmission\Integrations\Widget
  */
 class HTML_Widget extends WP_Widget {
 
@@ -65,11 +65,11 @@ class HTML_Widget extends WP_Widget {
 		$this->plugin = Plugin::init();
 		$widget_ops = [
 			'classname'                   => 'widget_html',
-			'description'                 => __( 'Displays HTML code with syntax highlighting.', 'test-plugin' ),
+			'description'                 => __( 'Displays HTML code with syntax highlighting.', 'guest-submission' ),
 			'customize_selective_refresh' => true,
 		];
 		$control_ops = [];
-		parent::__construct( 'test-plugin', __( 'HTML Test Widget', 'test-plugin' ), $widget_ops, $control_ops );
+		parent::__construct( 'guest-submission', __( 'HTML Test Widget', 'guest-submission' ), $widget_ops, $control_ops );
 	}
 
 	/**
@@ -126,7 +126,7 @@ class HTML_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $this->default_instance );
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'content' ) ); ?>" class="screen-reader-text"><?php esc_html_e( 'Content:', 'test-plugin' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'content' ) ); ?>" class="screen-reader-text"><?php esc_html_e( 'Content:', 'guest-submission' ); ?></label>
 			<textarea class="widefat html-widget" rows="16" cols="20" id="<?php echo esc_attr( $this->get_field_id( 'content' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'content' ) ); ?>"><?php echo esc_textarea( $instance['content'] ); ?></textarea>
 		</p>
 		<?php

@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -12,9 +12,9 @@
 <p>
     <?php
     /**
-     * @see \TestPlugin\App\Frontend\Templates
+     * @see \GuestSubmission\App\Frontend\Templates
      * @var $args
      */
-    echo __( 'This is being loaded inside "wp_footer" from the templates class', 'test-plugin' ) . ' ' . $args[ 'data' ][ 'text' ];
+    echo __( 'This is being loaded inside "wp_footer" from the templates class', 'guest-submission' ) . ' ' . $args[ 'data' ][ 'text' ];
     ?>
 </p>

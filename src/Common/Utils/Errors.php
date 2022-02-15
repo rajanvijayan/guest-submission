@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,15 +11,15 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Common\Utils;
+namespace GuestSubmission\Common\Utils;
 
-use TestPlugin\Config\Plugin;
+use GuestSubmission\Config\Plugin;
 
 /**
  * Utility to show prettified wp_die errors, write debug logs as
  * string or array and to deactivate plugin and print a notice
  *
- * @package TestPlugin\Config
+ * @package GuestSubmission\Config
  * @since 1.0.0
  */
 class Errors {
@@ -47,7 +47,7 @@ class Errors {
 	public static function wpDie( $message = '', $subtitle = '', $source = '', $exception = '', $title = '' ) {
 		if ( $message ) {
 			$plugin = self::getPluginData();
-			$title = $title ? $title : $plugin['name'] . ' ' . $plugin['version'] . ' ' . __( '&rsaquo; Fatal Error', 'test-plugin' );
+			$title = $title ? $title : $plugin['name'] . ' ' . $plugin['version'] . ' ' . __( '&rsaquo; Fatal Error', 'guest-submission' );
 			Errors::writeLog(
 				[
 					'title'     => $title . ' - ' . $subtitle,
@@ -58,7 +58,7 @@ class Errors {
 			);
 			$source = $source ? '<code>' .
 				sprintf(  /* translators: %s: file path */
-					__( 'Error source: %s', 'test-plugin' ), $source
+					__( 'Error source: %s', 'guest-submission' ), $source
 				) . '</code><BR><BR>' : '';
 			$footer = $source . '<a href="' . $plugin['uri'] . '">' . $plugin['uri'] . '</a>';
 			$message = '<p>' . $message . '</p>';
@@ -83,7 +83,7 @@ class Errors {
 	public static function pluginDie( $message = '', $subtitle = '', $source = '', $exception = '', $title = '' ) {
 		if ( $message ) {
 			$plugin = self::getPluginData();
-			$title = $title ? $title : $plugin['name'] . ' ' . $plugin['version'] . ' ' . __( '&rsaquo; Plugin Disabled', 'test-plugin' );
+			$title = $title ? $title : $plugin['name'] . ' ' . $plugin['version'] . ' ' . __( '&rsaquo; Plugin Disabled', 'guest-submission' );
 			Errors::writeLog(
 				[
 					'title'     => $title . ' - ' . $subtitle,
@@ -94,7 +94,7 @@ class Errors {
 			);
 			$source = $source ? '<small>' .
 				sprintf( /* translators: %s: file path */
-					__( 'Error source: %s', 'test-plugin' ), $source
+					__( 'Error source: %s', 'guest-submission' ), $source
 				) . '</small> - ' : '';
 			$footer = $source . '<a href="' . $plugin['uri'] . '"><small>' . $plugin['uri'] . '</small></a>';
 			$error = "<strong><h3>{$title}</h3>{$subtitle}</strong><p>{$message}</p><hr><p>{$footer}</p>";

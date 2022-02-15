@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,9 +11,9 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Config;
+namespace GuestSubmission\Config;
 
-use TestPlugin\Common\Traits\Singleton;
+use GuestSubmission\Common\Traits\Singleton;
 
 /**
  * Plugin data which are used through the plugin, most of them are defined
@@ -21,7 +21,7 @@ use TestPlugin\Common\Traits\Singleton;
  * that extends the Base abstract class
  *
  * @see Base
- * @package TestPlugin\Config
+ * @package GuestSubmission\Config
  * @since 1.0.0
  */
 final class Plugin {

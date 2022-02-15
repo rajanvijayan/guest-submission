@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,14 +11,14 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\App\Rest;
+namespace GuestSubmission\App\Rest;
 
-use TestPlugin\Common\Abstracts\Base;
+use GuestSubmission\Common\Abstracts\Base;
 
 /**
  * Class Example
  *
- * @package TestPlugin\App\Rest
+ * @package GuestSubmission\App\Rest
  * @since 1.0.0
  */
 class Example extends Base {
@@ -62,7 +62,7 @@ class Example extends Base {
 				'get_callback'    => [ $this, 'getTextField' ],
 				'update_callback' => [ $this, 'updateTextField' ],
 				'schema'          => [
-					'description' => __( 'Text field demo of Post type', 'test-plugin' ),
+					'description' => __( 'Text field demo of Post type', 'guest-submission' ),
 					'type'        => 'string',
 				],
 			]
@@ -125,7 +125,7 @@ class Example extends Base {
 		if ( false === $post_id ) {
 			return new \WP_Error(
 				'rest_post_views_failed',
-				\__( 'Failed to update post views.', 'test-plugin' ),
+				\__( 'Failed to update post views.', 'guest-submission' ),
 				[ 'status' => 500 ]
 			);
 		}

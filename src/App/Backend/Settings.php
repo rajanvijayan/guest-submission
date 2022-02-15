@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,14 +11,14 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\App\Backend;
+namespace GuestSubmission\App\Backend;
 
-use TestPlugin\Common\Abstracts\Base;
+use GuestSubmission\Common\Abstracts\Base;
 
 /**
  * Class Settings
  *
- * @package TestPlugin\App\Backend
+ * @package GuestSubmission\App\Backend
  * @since 1.0.0
  */
 class Settings extends Base {

@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,12 +11,12 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Integrations\Example;
+namespace GuestSubmission\Integrations\Example;
 
 /**
  * Class Api
  *
- * @package TestPlugin\Integrations\Example
+ * @package GuestSubmission\Integrations\Example
  * @since 1.0.0
  */
 class Api {

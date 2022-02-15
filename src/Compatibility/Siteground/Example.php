@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,12 +11,12 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Compatibility\Siteground;
+namespace GuestSubmission\Compatibility\Siteground;
 
 /**
  * Class Example
  *
- * @package TestPlugin\Compatibility\Siteground
+ * @package GuestSubmission\Compatibility\Siteground
  * @since 1.0.0
  */
 class Example {

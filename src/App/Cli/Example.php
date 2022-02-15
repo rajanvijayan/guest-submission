@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,14 +11,14 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\App\Cli;
+namespace GuestSubmission\App\Cli;
 
-use TestPlugin\Common\Abstracts\Base;
+use GuestSubmission\Common\Abstracts\Base;
 
 /**
  * Class Example
  *
- * @package TestPlugin\App\Cli
+ * @package GuestSubmission\App\Cli
  * @since 1.0.0
  */
 class Example extends Base {

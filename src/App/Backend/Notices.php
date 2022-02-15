@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,14 +11,14 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\App\Backend;
+namespace GuestSubmission\App\Backend;
 
-use TestPlugin\Common\Abstracts\Base;
+use GuestSubmission\Common\Abstracts\Base;
 
 /**
  * Class Notices
  *
- * @package TestPlugin\App\Backend
+ * @package GuestSubmission\App\Backend
  * @since 1.0.0
  */
 class Notices extends Base {
@@ -49,7 +49,7 @@ class Notices extends Base {
 		global $pagenow;
 		if ( $pagenow === 'options-general.php' ) {
 			echo '<div class="notice notice-warning is-dismissible">
-             <p>' . __( 'This is an example of a notice that appears on the settings page.', 'test-plugin' ) . '</p>
+             <p>' . __( 'This is an example of a notice that appears on the settings page.', 'guest-submission' ) . '</p>
          </div>';
 		}
 	}

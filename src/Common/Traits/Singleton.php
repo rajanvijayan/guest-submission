@@ -1,8 +1,8 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
@@ -11,12 +11,12 @@
 
 declare( strict_types = 1 );
 
-namespace TestPlugin\Common\Traits;
+namespace GuestSubmission\Common\Traits;
 
 /**
  * The singleton skeleton trait to instantiate the class only once
  *
- * @package TestPlugin\Common\Traits
+ * @package GuestSubmission\Common\Traits
  * @since 1.0.0
  */
 trait Singleton {

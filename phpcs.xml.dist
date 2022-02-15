@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<ruleset name="Test Plugin ruleset">
-    <description>Ruleset for the Test Plugin.</description>
+<ruleset name="Guest Submission ruleset">
+    <description>Ruleset for the Guest Submission.</description>
 
-    <file>test-plugin.php</file>
+    <file>guest-submission.php</file>
     <file>./src/</file>
 
     <!-- Additional arguments. -->
@@ -57,7 +57,7 @@
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
-                <element value="test-plugin"/>
+                <element value="guest-submission"/>
                 <element value="library-textdomain"/>
             </property>
         </properties>
@@ -67,7 +67,7 @@
     <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
         <properties>
             <property name="prefixes" type="array">
-                <element value="TestPlugin"/>
+                <element value="GuestSubmission"/>
                 <element value="TEST_PLUGIN"/>
                 <element value="test_plugin"/>
             </property>

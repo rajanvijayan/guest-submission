@@ -1,24 +1,24 @@
 <?php
 /**
- * Test Plugin
+ * Guest Submission
  *
- * @package   the-test-plugin
+ * @package   guest-submission
  * @author    Rajan Vijayan <me@rajanvijayan.com>
  * @copyright rajanvijayan
  * @license   MIT
  * @link      https://rajanvijayan.com
  *
- * Plugin Name:     Test Plugin
- * Plugin URI:      https://rajanvijayan.com/test-plugin
- * Description:     Starter plugin project for WordPress
+ * Plugin Name:     Guest Submission
+ * Plugin URI:      https://rajanvijayan.com/guest-submission
+ * Description:     This plugin is about creating an interface in Front-end site of website, so that guest authors can submit posts from front-side. Using this interface, the guest author should be able to create a post from front side. We can also create another page where all the posts created by this author will be listed.
  * Version:         1.0.0
  * Author:          Rajan Vijayan
  * Author URI:      https://rajanvijayan.com
- * Text Domain:     test-plugin
+ * Text Domain:     guest-submission
  * Domain Path:     /languages
  * Requires PHP:    7.1
  * Requires WP:     5.5.0
- * Namespace:       TestPlugin
+ * Namespace:       GuestSubmission
  */
 
 declare( strict_types = 1 );
@@ -42,28 +42,28 @@ $test_plugin_autoloader = require plugin_dir_path( TEST_PLUGIN_FILE ) . 'vendor/
  *
  * @since 1.0.0
  */
-register_activation_hook( __FILE__, [ 'TestPlugin\Config\Setup', 'activation' ] );
-register_deactivation_hook( __FILE__, [ 'TestPlugin\Config\Setup', 'deactivation' ] );
-register_uninstall_hook( __FILE__, [ 'TestPlugin\Config\Setup', 'uninstall' ] );
+register_activation_hook( __FILE__, [ 'GuestSubmission\Config\Setup', 'activation' ] );
+register_deactivation_hook( __FILE__, [ 'GuestSubmission\Config\Setup', 'deactivation' ] );
+register_uninstall_hook( __FILE__, [ 'GuestSubmission\Config\Setup', 'uninstall' ] );
 
 /**
  * Bootstrap the plugin
  *
  * @since 1.0.0
  */
-if ( ! class_exists( '\TestPlugin\Bootstrap' ) ) {
-	wp_die( __( 'Test Plugin is unable to find the Bootstrap class.', 'test-plugin' ) );
+if ( ! class_exists( '\GuestSubmission\Bootstrap' ) ) {
+	wp_die( __( 'Guest Submission is unable to find the Bootstrap class.', 'guest-submission' ) );
 }
 add_action(
 	'plugins_loaded',
 	static function () use ( $test_plugin_autoloader ) {
 		/**
-		 * @see \TestPlugin\Bootstrap
+		 * @see \GuestSubmission\Bootstrap
 		 */
 		try {
-			new \TestPlugin\Bootstrap( $test_plugin_autoloader );
+			new \GuestSubmission\Bootstrap( $test_plugin_autoloader );
 		} catch ( Exception $e ) {
-			wp_die( __( 'Test Plugin is unable to run the Bootstrap class.', 'test-plugin' ) );
+			wp_die( __( 'Guest Submission is unable to run the Bootstrap class.', 'guest-submission' ) );
 		}
 	}
 );
@@ -71,9 +71,9 @@ add_action(
 /**
  * Create a main function for external uses
  *
- * @return \TestPlugin\Common\Functions
+ * @return \GuestSubmission\Common\Functions
  * @since 1.0.0
  */
-function test_plugin(): \TestPlugin\Common\Functions {
-	return new \TestPlugin\Common\Functions();
+function test_plugin(): \GuestSubmission\Common\Functions {
+	return new \GuestSubmission\Common\Functions();
 }
