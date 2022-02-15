@@ -14,6 +14,7 @@ declare( strict_types = 1 );
 namespace GuestSubmission\App\General;
 
 use GuestSubmission\Common\Abstracts\Base;
+use GuestSubmission\App\General\PostTypes;
 
 /**
  * Class Shortcodes
@@ -47,12 +48,12 @@ class Shortcodes extends Base {
 	 * @since 1.0.0
 	 */
 	public function submissionFormFunc( $atts ): string {
-		
-		$atts = shortcode_atts( array(
+
+		$atts = shortcode_atts( [
 			'post_type' => PostTypes::POST_TYPE['id'],
 			'status' => 'draft',
-		), $atts, 'submission_form' );
-	 
+		], $atts, 'submission_form' );
+
 		return 'FORM RENDER PART';
 	}
 }
