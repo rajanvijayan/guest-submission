@@ -36,7 +36,7 @@ class Shortcodes extends Base {
 		 * Add plugin code here
 		 */
 
-		add_shortcode( 'foobar', [ $this, 'foobarFunc' ] );
+		add_shortcode( 'submission_form', [ $this, 'submissionFormFunc' ] );
 	}
 
 	/**
@@ -46,14 +46,13 @@ class Shortcodes extends Base {
 	 * @return string
 	 * @since 1.0.0
 	 */
-	public function foobarFunc( array $atts ): string {
-		shortcode_atts(
-			[
-				'foo' => 'something',
-				'bar' => 'something else',
-			], $atts
-		);
-		return '<span class="foo">foo = ' . $atts['foo'] . '</span>' .
-			'<span class="bar">foo = ' . $atts['bar'] . '</span>';
+	public function submissionFormFunc( $atts ): string {
+		
+		$atts = shortcode_atts( array(
+			'post_type' => PostTypes::POST_TYPE['id'],
+			'status' => 'draft',
+		), $atts, 'submission_form' );
+	 
+		return 'FORM RENDER PART';
 	}
 }
