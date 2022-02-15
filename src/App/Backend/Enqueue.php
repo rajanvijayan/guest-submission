@@ -51,7 +51,7 @@ class Enqueue extends Base {
 			[
 				[
 					'deps'    => [],
-					'handle'  => 'plugin-name-backend-css',
+					'handle'  => 'guest-submission-backend-css',
 					'media'   => 'all',
 					'source'  => plugins_url( '/assets/public/css/backend.css', GUEST_PLUGIN_FILE ), // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 					'version' => $this->plugin->version(),
@@ -64,7 +64,7 @@ class Enqueue extends Base {
 			[
 				[
 					'deps'      => [],
-					'handle'    => 'guest-plugin-backend-js',
+					'handle'    => 'guest-submission-backend-js',
 					'in_footer' => true,
 					'source'    => plugins_url( '/assets/public/js/backend.js', GUEST_PLUGIN_FILE ), // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 					'version'   => $this->plugin->version(),

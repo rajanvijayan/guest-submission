@@ -77,11 +77,10 @@ class Enqueue extends Base {
 		global $wp_query;
 
 		// localize script and send variables
-		wp_localize_script( 'guest-plugin-frontend-js', 'plugin_frontend_script',
+		wp_localize_script( 'guest-submission-frontend-js', 'plugin_frontend_script',
 			[
-				'plugin_frontend_url'  => admin_url( 'admin-ajax.php' ),
-				'plugin_wp_query_vars' => $wp_query->query_vars,
-				'nonce'                => wp_create_nonce( 'guest-submission-ajax-nonce' ),
+				'ajaxurl'  => admin_url( 'admin-ajax.php' ),
+				'nonce'    => wp_create_nonce( 'guest-submission-ajax-nonce' ),
 			]
 		);
 	}

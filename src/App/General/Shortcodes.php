@@ -37,6 +37,8 @@ class Shortcodes extends Base {
 		 * Add plugin code here
 		 */
 
+		add_action( 'wp_ajax_wpps_do_create_post', [ $this, 'wpps_ajax_create_post' ] );
+
 		add_shortcode( 'submission_form', [ $this, 'submissionFormFunc' ] );
 	}
 
@@ -121,5 +123,102 @@ class Shortcodes extends Base {
 
 		return $str;
 
+	}
+
+	/**
+	 * Post form ajax action
+	 *
+	 * @since    1.0.0
+	 */
+	public function wpps_ajax_create_post() {
+
+		
+
+		// Check if user logged in.
+		if ( ! is_user_logged_in() ) {
+			return;
+		}
+		
+
+		
+		// Security check.
+		if ( ! isset( $_POST['wpps_nonce'] ) || ! wp_verify_nonce( $_POST['wpps_nonce'], 'guest-submission-ajax-nonce' ) ) {
+			return;
+		}
+
+		// $_POST sanitization.
+		$title     = wp_strip_all_tags( wp_unslash( $_POST['wpps_post_title'] ) );
+		$post_type = sanitize_text_field( wp_unslash( $_POST['wpps_post_type'] ) );
+		$content   = wp_kses_post( $_POST['wpps_post_content'] );
+		$excerpt   = sanitize_textarea_field( wp_unslash( $_POST['wpps_post_excerpt'] ) );
+		$author_id = get_current_user_id();
+
+		if ( empty( $title ) ) {
+			echo '<p style="color: red; border: 2px solid yellow; padding:10px; text-align: center">Title field mandatory!</p>';
+			wp_die();
+		}
+
+		
+
+		// Add the content of the form to $post as an array.
+		$post = array(
+			'post_title'   => $title,
+			'post_content' => $content,
+			'post_excerpt' => $excerpt,
+			'post_status'  => 'draft',
+			'post_type'    => $post_type,
+			'post_author'  => $author_id,
+		);
+
+		$post_id = wp_insert_post( $post );
+		$respone = '';
+
+
+		
+
+		if ( ! empty( $post_id ) ) {
+
+			// send email to admin.
+			$to      = get_option( 'admin_email' );
+			$subject = 'Page/Post Moderation';
+			$body    = 'New post/page have been successfully created by Guest user.';
+			$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+			wp_mail( $to, $subject, $body, $headers );
+
+			if ( isset( $_FILES['wpps_post_featured_image'] ) ) {
+
+				print_r($_FILES);
+				// For Featured Image.
+				$upload = wp_upload_bits( $_FILES['wpps_post_featured_image']['name'], null, file_get_contents( $_FILES['wpps_post_featured_image']['tmp_name'] ) );
+
+				if ( ! $upload_file['error'] ) {
+					$filename    = $upload['file'];
+					$wp_filetype = wp_check_filetype( $filename, null );
+					$attachment  = array(
+						'post_mime_type' => $wp_filetype['type'],
+						'post_title'     => sanitize_file_name( $filename ),
+						'post_content'   => '',
+						'post_status'    => 'inherit',
+					);
+
+					$attachment_id = wp_insert_attachment( $attachment, $filename, $post_id );
+
+					if ( ! is_wp_error( $attachment_id ) ) {
+						require_once ABSPATH . 'wp-admin/includes/image.php';
+
+						$attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+						wp_update_attachment_metadata( $attachment_id, $attachment_data );
+						set_post_thumbnail( $post_id, $attachment_id );
+					}
+				} else {
+					$respone = '<span style="color: red">and Failed to update attachment.</span>';
+				}
+			}
+			echo '<p style="border: 2px solid green; padding:10px; text-align: center">Saved your post successfully! ' . esc_html( $respone ) . '</p>';
+		} else {
+			echo '<p style="color: red; border: 2px solid yellow; padding:10px; text-align: center">Failed to save your post!</p>';
+		}
+
+		wp_die();
 	}
 }
