@@ -73,9 +73,6 @@ class Enqueue extends Base {
 			wp_enqueue_script( $js['handle'], $js['source'], $js['deps'], $js['version'], $js['in_footer'] );
 		}
 
-		// Send variables to JS
-		global $wp_query;
-
 		// localize script and send variables
 		wp_localize_script( 'guest-submission-frontend-js', 'plugin_frontend_script',
 			[

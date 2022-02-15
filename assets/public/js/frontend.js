@@ -80,17 +80,16 @@ __webpack_require__.r(__webpack_exports__);
    * should reside in this file.
    */
 
-  $(document).on('submit', '#wpps-post-form', function (e) {
+  $(document).on('submit', '#gs-post-form', function (e) {
     e.preventDefault();
     var formData = new FormData();
-    formData.append("wpps_post_featured_image", $('#wpps_post_featured_image')[0].files[0]);
-    formData.append("action", "wpps_do_create_post");
-    formData.append("wpps_nonce", plugin_frontend_script.nonce);
-    formData.append("wpps_post_title", $('#wpps_post_title').val());
-    formData.append("wpps_post_type", $('#wpps_post_type').val());
-    formData.append("wpps_post_content", $('#wpps_post_content').val());
-    formData.append("wpps_post_excerpt", $('#wpps_post_excerpt').val());
-    console.log(plugin_frontend_script.ajaxurl);
+    formData.append("gs_post_featured_image", $('#gs_post_featured_image')[0].files[0]);
+    formData.append("action", "gs_do_create_post");
+    formData.append("gs_nonce", plugin_frontend_script.nonce);
+    formData.append("gs_post_title", $('#gs_post_title').val());
+    formData.append("gs_post_type", $('#gs_post_type').val());
+    formData.append("gs_post_content", $('#gs_post_content').val());
+    formData.append("gs_post_excerpt", $('#gs_post_excerpt').val());
     $.ajax({
       url: plugin_frontend_script.ajaxurl,
       type: 'post',
@@ -98,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
       contentType: false,
       data: formData,
       success: function success(data) {
-        $(".wpps-res").html(data);
+        $(".gs-result").html(data);
       }
     });
   });

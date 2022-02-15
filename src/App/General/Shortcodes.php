@@ -37,7 +37,7 @@ class Shortcodes extends Base {
 		 * Add plugin code here
 		 */
 
-		add_action( 'wp_ajax_wpps_do_create_post', [ $this, 'wpps_ajax_create_post' ] );
+		add_action( 'wp_ajax_gs_do_create_post', [ $this, 'gs_ajax_create_post' ] );
 
 		add_shortcode( 'submission_form', [ $this, 'submissionFormFunc' ] );
 	}
@@ -58,12 +58,10 @@ class Shortcodes extends Base {
 
 		ob_start();
 
-		// Allow logged in user only.
 		if ( ! is_user_logged_in() ) {
 			return '<p>Login required! Click here to <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '" >login</a>.</p>';
 		}
 
-		// Get custom post types.
 		$args = [
 			'public'   => true,
 			'_builtin' => false,
@@ -75,16 +73,16 @@ class Shortcodes extends Base {
 		$post_types = get_post_types( $args, $output, $operator );
 
 		?>
-		<div id="wpps-form-wrap">
+		<div id="gs-form-wrap">
 			<h3>Add New Post</h3>
-			<form action="" method="post" id="wpps-post-form" enctype="multipart/form-data">
-				<div class="wpps-form-row">
-					<label for="wpps_post_title">Post Title</label>
-					<input type="text" name="wpps_post_title" id="wpps_post_title" class="form-control" size="40" required>
+			<form action="" method="post" id="gs-post-form" enctype="multipart/form-data">
+				<div class="gs-form-row">
+					<label for="gs_post_title">Post Title</label>
+					<input type="text" name="gs_post_title" id="gs_post_title" class="form-control" size="40" required>
 				</div>
-				<div class="wpps-form-row">
-					<label for="wpps_post_type">Post type</label>
-					<select name="wpps_post_type" id="wpps_post_type" class="form-control" required>
+				<div class="gs-form-row">
+					<label for="gs_post_type">Post type</label>
+					<select name="gs_post_type" id="gs_post_type" class="form-control" required>
 						<option value="">Select post type</option>
 					<?php
 					foreach ( $post_types as $post_type ) {
@@ -95,28 +93,28 @@ class Shortcodes extends Base {
 					?>
 					</select>
 				</div>
-				<div class="wpps-form-row">
-					<label for="wpps_post_content">Description</label>
+				<div class="gs-form-row">
+					<label for="gs_post_content">Description</label>
 					<?php
 					$content   = '';
-					$editor_id = 'wpps_post_content';
+					$editor_id = 'gs_post_content';
 					$settings  = [ 'media_buttons' => false ];
 					wp_editor( $content, $editor_id, $settings );
 					?>
 				</div>
-				<div class="wpps-form-row">
-					<label for="wpps_post_excerpt">Excerpt</label>
-					<textarea name="wpps_post_excerpt" id="wpps_post_excerpt" cols="30" rows="3" class="form-control"></textarea>
+				<div class="gs-form-row">
+					<label for="gs_post_excerpt">Excerpt</label>
+					<textarea name="gs_post_excerpt" id="gs_post_excerpt" cols="30" rows="3" class="form-control"></textarea>
 				</div>
-				<div class="wpps-form-row">
-					<label for="wpps_post_featured_image">Featured image</label>
-					<input type="file" name="wpps_post_featured_image" id="wpps_post_featured_image">
+				<div class="gs-form-row">
+					<label for="gs_post_featured_image">Featured image</label>
+					<input type="file" name="gs_post_featured_image" id="gs_post_featured_image">
 				</div>
-				<div class="wpps-form-row">
-					<input type="submit" value="Submit" class="wpps-btn">
+				<div class="gs-form-row">
+					<input type="submit" value="Submit" class="gs-btn">
 				</div>
 			</form>
-			<div class="wpps-res"></div>
+			<div class="gs-result"></div>
 		</div>
 		<?php
 		$str = ob_get_clean();
@@ -130,37 +128,25 @@ class Shortcodes extends Base {
 	 *
 	 * @since    1.0.0
 	 */
-	public function wpps_ajax_create_post() {
+	public function gs_ajax_create_post() {
 
-		
-
-		// Check if user logged in.
+		// User login check
 		if ( ! is_user_logged_in() ) {
 			return;
 		}
-		
 
-		
-		// Security check.
-		if ( ! isset( $_POST['wpps_nonce'] ) || ! wp_verify_nonce( $_POST['wpps_nonce'], 'guest-submission-ajax-nonce' ) ) {
+		// Nonce verification
+		if ( ! isset( $_POST['gs_nonce'] ) || ! wp_verify_nonce( $_POST['gs_nonce'], 'guest-submission-ajax-nonce' ) ) {
 			return;
 		}
-
-		// $_POST sanitization.
-		$title     = wp_strip_all_tags( wp_unslash( $_POST['wpps_post_title'] ) );
-		$post_type = sanitize_text_field( wp_unslash( $_POST['wpps_post_type'] ) );
-		$content   = wp_kses_post( $_POST['wpps_post_content'] );
-		$excerpt   = sanitize_textarea_field( wp_unslash( $_POST['wpps_post_excerpt'] ) );
+		
+		// Sanitize the form data 
+		$title     = wp_strip_all_tags( wp_unslash( $_POST['gs_post_title'] ) );
+		$post_type = sanitize_text_field( wp_unslash( $_POST['gs_post_type'] ) );
+		$content   = wp_kses_post( $_POST['gs_post_content'] );
+		$excerpt   = sanitize_textarea_field( wp_unslash( $_POST['gs_post_excerpt'] ) );
 		$author_id = get_current_user_id();
 
-		if ( empty( $title ) ) {
-			echo '<p style="color: red; border: 2px solid yellow; padding:10px; text-align: center">Title field mandatory!</p>';
-			wp_die();
-		}
-
-		
-
-		// Add the content of the form to $post as an array.
 		$post = array(
 			'post_title'   => $title,
 			'post_content' => $content,
@@ -173,23 +159,19 @@ class Shortcodes extends Base {
 		$post_id = wp_insert_post( $post );
 		$respone = '';
 
-
-		
-
 		if ( ! empty( $post_id ) ) {
 
-			// send email to admin.
+			// Admin Notification.
 			$to      = get_option( 'admin_email' );
-			$subject = 'Page/Post Moderation';
-			$body    = 'New post/page have been successfully created by Guest user.';
+			$subject = 'New Post Submission from ' . get_bloginfo( 'name' );
+			$body    = 'New post created by '. get_the_author_meta('display_name', $author_id);;
 			$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 			wp_mail( $to, $subject, $body, $headers );
 
-			if ( isset( $_FILES['wpps_post_featured_image'] ) ) {
+			if ( isset( $_FILES['gs_post_featured_image'] ) ) {
 
-				print_r($_FILES);
-				// For Featured Image.
-				$upload = wp_upload_bits( $_FILES['wpps_post_featured_image']['name'], null, file_get_contents( $_FILES['wpps_post_featured_image']['tmp_name'] ) );
+				// Featured Image.
+				$upload = wp_upload_bits( $_FILES['gs_post_featured_image']['name'], null, file_get_contents( $_FILES['gs_post_featured_image']['tmp_name'] ) );
 
 				if ( ! $upload_file['error'] ) {
 					$filename    = $upload['file'];
@@ -214,9 +196,9 @@ class Shortcodes extends Base {
 					$respone = '<span style="color: red">and Failed to update attachment.</span>';
 				}
 			}
-			echo '<p style="border: 2px solid green; padding:10px; text-align: center">Saved your post successfully! ' . esc_html( $respone ) . '</p>';
+			echo '<div class="gs-alert succ"><p>Saved your post successfully! ' . esc_html( $respone ) . '</p></div>';
 		} else {
-			echo '<p style="color: red; border: 2px solid yellow; padding:10px; text-align: center">Failed to save your post!</p>';
+			echo '<div class="gs-alert err"><p>Failed to save your post!</p></div>';
 		}
 
 		wp_die();

@@ -11,3 +11,32 @@
 * https://github.com/maoberlehner/node-sass-magic-importer/tree/master/packages/node-sass-magic-importer#globbing
  */
 @import 'components/**/*.scss';
+
+.gs-form-row {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    label {
+        margin-bottom: 10px;
+    }
+}
+.gs-alert{
+    padding: 10px;
+    margin-top: 10px;
+    p{
+        font-size: 16px;
+        margin-bottom: 0px;
+    }
+    &.succ{
+        border: 1px solid green;
+    }
+    &.succ p{
+        color: green;
+    }
+    &.err{
+        border: 1px solid red;
+    }
+    &.err p{
+        color: red;
+    }
+}
