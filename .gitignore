@@ -1,0 +1,41 @@
+# IDE
+.idea
+
+# Node
+node_modules
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# Composer
+vendor
+composer.lock
+
+# PHP
+phpunit.xml
+phpcs.xml
+.phpcs.xml
+
+# Others
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+*.lock
+cache
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
