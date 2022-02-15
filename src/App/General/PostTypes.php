@@ -27,10 +27,10 @@ class PostTypes extends Base {
 	 * Post type data
 	 */
 	public const POST_TYPE = [
-		'id'       => 'example-post-type',
-		'archive'  => 'example-post-types',
-		'title'    => 'Example Posts',
-		'singular' => 'Example Post',
+		'id'       => 'guest-post',
+		'archive'  => 'guest-posts',
+		'title'    => 'Guest Posts',
+		'singular' => 'Guest Post',
 		'icon'     => 'dashicons-format-chat',
 	];
 
