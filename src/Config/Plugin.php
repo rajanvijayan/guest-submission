@@ -40,7 +40,7 @@ final class Plugin {
 		$plugin_data = apply_filters( 'test_plugin_plugin_data', [
 			'settings'               => get_option( 'the-plugin-name-settings' ),
 			'plugin_path'            => untrailingslashit(
-				plugin_dir_path( TEST_PLUGIN_FILE )  // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
+				plugin_dir_path( GUEST_PLUGIN_FILE )  // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 			),
 			'plugin_template_folder' => 'templates',
 			'ext_template_folder'    => 'the-plugin-name-templates',
@@ -50,7 +50,7 @@ final class Plugin {
 		] );
 		return array_merge(
 			apply_filters( 'test_plugin_plugin_meta_data',
-				get_file_data( TEST_PLUGIN_FILE, // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
+				get_file_data( GUEST_PLUGIN_FILE, // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 					[
 						'name'         => 'Plugin Name',
 						'uri'          => 'Plugin URI',

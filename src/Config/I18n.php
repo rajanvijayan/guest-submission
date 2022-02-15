@@ -32,7 +32,7 @@ final class I18n extends Base {
 		load_plugin_textdomain(
 			$this->plugin->textDomain(),
 			false,
-			dirname( plugin_basename( TEST_PLUGIN_FILE ) ) . '/languages' // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
+			dirname( plugin_basename( GUEST_PLUGIN_FILE ) ) . '/languages' // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 		);
 	}
 }

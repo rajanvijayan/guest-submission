@@ -28,14 +28,14 @@ declare( strict_types = 1 );
  *
  * @since 1.0.0
  */
-const TEST_PLUGIN_FILE = __FILE__;
+const GUEST_PLUGIN_FILE = __FILE__;
 
 /**
  * Load PSR4 autoloader
  *
  * @since 1.0.0
  */
-$test_plugin_autoloader = require plugin_dir_path( TEST_PLUGIN_FILE ) . 'vendor/autoload.php';
+$test_plugin_autoloader = require plugin_dir_path( GUEST_PLUGIN_FILE ) . 'vendor/autoload.php';
 
 /**
  * Setup hooks (activation, deactivation, uninstall)

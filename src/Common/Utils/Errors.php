@@ -114,7 +114,7 @@ class Errors {
 		}
 		add_action( 'admin_init',
 			static function () {
-				deactivate_plugins( plugin_basename( TEST_PLUGIN_FILE ) ); // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
+				deactivate_plugins( plugin_basename( GUEST_PLUGIN_FILE ) ); // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 			}
 		);
 	}

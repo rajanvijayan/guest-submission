@@ -51,9 +51,9 @@ class Enqueue extends Base {
 			[
 				[
 					'deps'    => [],
-					'handle'  => 'plugin-name-frontend-css',
+					'handle'  => 'guest-submission-frontend-css',
 					'media'   => 'all',
-					'source'  => plugins_url( '/assets/public/css/frontend.css', TEST_PLUGIN_FILE ), // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
+					'source'  => plugins_url( '/assets/public/css/frontend.css', GUEST_PLUGIN_FILE ), // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 					'version' => $this->plugin->version(),
 				],
 			] as $css ) {
@@ -63,10 +63,10 @@ class Enqueue extends Base {
 		foreach (
 			[
 				[
-					'deps'      => [],
-					'handle'    => 'plugin-test-frontend-js',
+					'deps'      => [ 'jquery' ],
+					'handle'    => 'guest-submission-frontend-js',
 					'in_footer' => true,
-					'source'    => plugins_url( '/assets/public/js/frontend.js', TEST_PLUGIN_FILE ), // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
+					'source'    => plugins_url( '/assets/public/js/frontend.js', GUEST_PLUGIN_FILE ), // phpcs:disable ImportDetection.Imports.RequireImports.Symbol -- this constant is global
 					'version'   => $this->plugin->version(),
 				],
 			] as $js ) {
@@ -77,10 +77,11 @@ class Enqueue extends Base {
 		global $wp_query;
 
 		// localize script and send variables
-		wp_localize_script( 'plugin-test-frontend-js', 'plugin_frontend_script',
+		wp_localize_script( 'guest-plugin-frontend-js', 'plugin_frontend_script',
 			[
 				'plugin_frontend_url'  => admin_url( 'admin-ajax.php' ),
 				'plugin_wp_query_vars' => $wp_query->query_vars,
+				'nonce'                => wp_create_nonce( 'guest-submission-ajax-nonce' ),
 			]
 		);
 	}

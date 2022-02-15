@@ -68,7 +68,7 @@
         <properties>
             <property name="prefixes" type="array">
                 <element value="GuestSubmission"/>
-                <element value="TEST_PLUGIN"/>
+                <element value="GUEST_PLUGIN"/>
                 <element value="test_plugin"/>
             </property>
         </properties>

@@ -21,7 +21,7 @@ const projectFiles = {
     browserSync: {
         enable: true, // enable or disable browserSync
         host:   'localhost',
-        port:   3000,
+        port:   1000,
         mode:   'proxy', // proxy | server
         server: { baseDir: [ 'public' ] }, // can be ignored if using proxy
         proxy:  'https://wp-strap.lndo.site',
@@ -29,7 +29,7 @@ const projectFiles = {
         // including both JS and Sass files. We can use this property to tell BrowserSync to watch
         // for other types of files, in this case PHP files, in our project.
         files:  '**/**/**.php',
-        reload: true, // Set false to prevent BrowserSync from reloading and let Webpack Dev Server take care of this
+        reload: false, // Set false to prevent BrowserSync from reloading and let Webpack Dev Server take care of this
         // browse to http://localhost:3000/ during development,
     },
     // JS configurations for development and production
