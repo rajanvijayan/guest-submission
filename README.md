@@ -1,4 +1,4 @@
-# WordPress Plugin Boilerplate
+# Guest Post/Page Submission Plugin 
 
 [![Build Status](https://api.travis-ci.org/wp-strap/wordpress-plugin-boilerplate.svg?branch=master&status=passed)](https://travis-ci.org/github/wp-strap/wordpress-plugin-boilerplate)
 ![PHP 7.1+](https://img.shields.io/badge/PHP-7.1%2B-brightgreen)
