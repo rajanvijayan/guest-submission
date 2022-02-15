@@ -19,17 +19,17 @@ To achieve this, you should create a new user from wpadmin dashboard with Author
 Also, you should create a custom post type as “guest posts” and develop a Post creation form UI on frontend through a shortcode or a Gutenberg block. The form should be visible only to logged in authors. 
 
 ### The form must have the following mandatory fields: 
-● Post Title: 
-● Dropdown (Fetch existing custom post type) 
-● Description 
-● Excerpt 
-● Featured image 
+ * Post Title: 
+ * Dropdown (Fetch existing custom post type) 
+ * Description 
+ * Excerpt 
+ * Featured image 
 
 The form must be sent via AJAX and saved as draft mode in the WordPress database. Once the form is sent, admin should receive the email for page/post moderation. Admin can publish that page/post. 
 
 After this, create a second shortcode or Gutenberg block to show the list of posts which are in pending status for admin approval. Please paginate the entries if there are more than ten. 
 ### Consider following points :- 
-● You should write very clean and optimized code. 
-● You must follow the coding standard (WP Coding standards). 
-● The code should be well documented. 
-● Set up a Git repository for this project, please make sure it is a private repository. You are not allowed to make the project for this plugin public. (Please invite your git code repo to this id/username "code.challenge@multidots.com" or "md-codechallenge for our review.)
+ * You should write very clean and optimized code. 
+ * You must follow the coding standard (WP Coding standards). 
+ * The code should be well documented. 
+ * Set up a Git repository for this project, please make sure it is a private repository. You are not allowed to make the project for this plugin public. (Please invite your git code repo to this id/username "code.challenge@multidots.com" or "md-codechallenge for our review.)
