@@ -40,10 +40,74 @@ class Shortcodes extends Base {
 		add_action( 'wp_ajax_gs_do_create_post', [ $this, 'gs_ajax_create_post' ] );
 
 		add_shortcode( 'submission_form', [ $this, 'submissionFormFunc' ] );
+		add_shortcode( 'submission_list', array( $this, 'submissionListFunc' ) );
 	}
 
 	/**
-	 * Shortcode example
+	 * Shortcode
+	 *
+	 * @param array $atts Parameters.
+	 * @return string
+	 * @since 1.0.0
+	 */
+	public function submissionListFunc( $atts ): string {
+		ob_start();
+
+		if ( ! is_user_logged_in() ) {
+			return '<p>Please <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '" >login</a> here.</p>';
+		}
+
+		$args = array(
+			'public'   => true,
+			'_builtin' => false,
+		);
+		
+		$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+
+		$query = new \WP_Query(
+			array(
+				'post_type'      => get_post_types( $args ),
+				'author'         => get_current_user_id(),
+				'posts_per_page' => 10,
+				'paged'          => $paged,
+			)
+		);
+
+		if ( $query->have_posts() ) {
+			echo '<div class="gs-list-wrap">';
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				?>
+					<div class="gs-post">
+						<h3><?php the_title(); ?></h3>
+						<?php the_excerpt(); ?>
+						<a href="<?php the_permalink(); ?>" class="gs-link">Read More</a>
+					</div>
+				<?php
+			}
+			echo '</div>';
+			?>
+			<div class="gs-pagination">
+				<?php
+				echo paginate_links(
+					array(
+						'format'  => '?paged=%#%',
+						'current' => max( 1, get_query_var( 'paged' ) ),
+						'total'   => $query->max_num_pages,
+					)
+				);
+				?>
+
+			</div>
+			<?php
+		}
+		wp_reset_postdata();
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Shortcode
 	 *
 	 * @param array $atts Parameters.
 	 * @return string
@@ -59,7 +123,7 @@ class Shortcodes extends Base {
 		ob_start();
 
 		if ( ! is_user_logged_in() ) {
-			return '<p>Login required! Click here to <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '" >login</a>.</p>';
+			return '<p>Please <a href="' . esc_url( wp_login_url( get_permalink() ) ) . '" >login</a> here.</p>';
 		}
 
 		$args = [
